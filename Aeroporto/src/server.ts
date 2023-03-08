@@ -12,7 +12,8 @@ AppDataSource.initialize().then(() => {
     app.use(express.json());
 
     app.post('/passageiro', new PassageiroController().create);
-    app.get('/passageiro/:id', new PassageiroController().get);
+    app.get('/passageiro', new PassageiroController().get)
+    app.get('/passageiro/:id', new PassageiroController().getById);
     app.put('/passageiro/:id', new PassageiroController().update);
     app.delete('/passageiro/:id', new PassageiroController().delete);
 

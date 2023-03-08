@@ -20,6 +20,15 @@ export class PassageiroController{
             const id = req.params.id;
         
             const repo = AppDataSource.getRepository(Passageiro);
+            const passageiro = await repo.find();
+        
+            res.json(passageiro);
+          }
+
+        async getById(req: Request, res: Response) {
+            const id = req.params.id;
+        
+            const repo = AppDataSource.getRepository(Passageiro);
             const passageiro = await repo.findOneBy({ codigo: parseInt(id) });
         
             res.json(passageiro);
