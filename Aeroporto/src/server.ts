@@ -3,7 +3,8 @@ const app = express();
 app.use(express.json());
 
 import AppDataSource from './config/Database';
-import { PassageiroController } from './controller/passageiro_controller';
+import { AeroportoController } from './controller/aeroporto_controller';
+import { VooController } from './controller/voo_controller';
 
 
 AppDataSource.initialize().then(() => {
@@ -11,11 +12,20 @@ AppDataSource.initialize().then(() => {
     const app = express();
     app.use(express.json());
 
-    app.post('/passageiro', new PassageiroController().create);
-    app.get('/passageiro', new PassageiroController().get)
-    app.get('/passageiro/:id', new PassageiroController().getById);
-    app.put('/passageiro/:id', new PassageiroController().update);
-    app.delete('/passageiro/:id', new PassageiroController().delete);
+    app.use(function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+        next();
+      });
+
+    app.post('/aeroporto', new AeroportoController().create);
+    app.get('/aeroporto', new AeroportoController().get)
+    app.get('/aeroporto/:id', new AeroportoController().getById);
+    app.put('/aeroporto/:id', new AeroportoController().update);
+    app.delete('/aeroporto/:id', new AeroportoController().delete);
+
+    app.get('/voo', new VooController().list);
 
 app.listen(8000);
 }).catch(e => console.log('Erro ao conectar ao banco: ', e))
