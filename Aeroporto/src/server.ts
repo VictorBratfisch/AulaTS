@@ -8,7 +8,7 @@ import { VooController } from './controller/voo_controller';
 
 
 AppDataSource.initialize().then(() => {
-    console.log('Conectado com sucesso ao banco');
+    console.log('Conectado com sucesso ao banco :)');
     const app = express();
     app.use(express.json());
 

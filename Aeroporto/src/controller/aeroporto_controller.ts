@@ -4,11 +4,12 @@ import { Aeroporto } from "../model/aeroporto";
 
 export class AeroportoController{
     async create(req: Request, res:Response){
-        const { nome }: { 
-            nome: string
+        const { nome, codigo_voo }: { 
+            nome: string, codigo_voo: number
           } = req.body;
           const aeroporto = new Aeroporto();
           aeroporto.nome = nome;
+          aeroporto.codigo_voo = codigo_voo;
       
           const repo = AppDataSource.getRepository(Aeroporto);
           await repo.save(aeroporto);

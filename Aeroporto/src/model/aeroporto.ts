@@ -7,4 +7,7 @@ export class Aeroporto{
 
 @Column({type: "varchar2", nullable: false})
 nome: string;
+
+@Column({ type: "integer", nullable: true })
+  codigo_voo: number;
 }
