@@ -1,11 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('voos')
+@Entity('victor_voos')
 export class Voo {
   @PrimaryGeneratedColumn()
   codigo: number;
 
-  @Column({ type: "text" })
+  @Column({ type: "varchar2", nullable: false})
   destino: string;
   
 }
